@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="build/css/vendor.css">
+    <script src="build/js/vendor.min.js"></script>
+    <script type="text/javascript" src="build/js/app.js"></script>
+    <title>Stolen Bike App</title>
+  </head>
+  <body>
+    <h1> Stolen bike's in your vacinity</h1>
+    <form id="searchLocation">
+      <div class="form-group">
+        <input type="text" id="location" >
+    </div>
+    <button class="btn" type="submit" id="submitLocation">search stolen bikes by location</button>
+    <br>
+    <br>
+  </form>
+    <div class="stolenBikeList">
+      <ol>
+      </ol>
+    </div>
+    <form id="searchStolenBikes">
+      <div class="form-group">
+        <input type="text" id="searchAttributes" >
+    </div>
+    <button class="btn" type="submit" id="submitAttributes">search stolen bikes by color</button>
+  </form>
+  <br>
+  <br>
+  <div class="searchResults">
+    <ol>
+    </ol>
+  </div>
+  <form id="brandStolenBikes">
+    <div class="form-group">
+      <input type="text" id="findBrand" >
+  </div>
+  <button class="btn" type="submit" id="submitBrand">search stolen bikes by brand</button>
+</form>
+<div class="searchBrandResults">
+  <ol>
+  </ol>
+</div>
+<form id="dateStolenBikes">
+  <div class="form-group">
+    <input type="date" id="findDate" >
+</div>
+<button class="btn" type="submit" id="submitDate">search stolen bikes by date</button>
+</form>
+<div class="searchDateResults">
+<ol>
+</ol>
+</div>
+
+
+  </body>
+</html>
