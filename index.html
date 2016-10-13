@@ -1,65 +1,61 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="build/css/styles.css">
-    <link rel="stylesheet" href="build/css/vendor.css">
-    <script src="build/js/vendor.min.js"></script>
-    <script type="text/javascript" src="build/js/app.js"></script>
-    <title>Stolen Bike App</title>
-  </head>
-  <body>
-    <div class="container">
-    <h1> Stolen bike's in your vacinity</h1>
-    <form id="searchLocation">
+<head>
+  <link href="build/css/styles.css" rel="stylesheet">
+  <link href="build/css/vendor.css" rel="stylesheet">
+  <script src="build/js/vendor.min.js">
+  </script>
+  <script src="build/js/app.js" type="text/javascript">
+  </script>
+  <title>Stolen Bike App</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Stolen bike's in your vacinity</h1>
+    <form id="searchLocation" name="searchLocation">
       <div class="form-group">
-        <input type="text" id="location" >
-    </div>
-    <button class="btn" type="submit" id="submitLocation">search stolen bikes by location</button>
-    <br>
-    <br>
-  </form>
+        <input id="location" type="text">
+      </div><button class="btn" id="submitLocation" type="submit">search stolen
+      bikes by location</button><br>
+      <br>
+    </form>
     <div class="stolenBikeList">
-      <ol>
-      </ol>
+      <ol></ol>
     </div>
-    <form id="searchStolenBikes">
+    <form id="searchStolenBikes" name="searchStolenBikes">
       <div class="form-group">
-        <input type="text" id="searchAttributes" >
+        <input id="searchAttributes" type="text">
+      </div>
+      <button class="btn" id="submitAttributes" type="submit">search
+      stolen bikes by color</button>
+    </form><br>
+    <br>
+    <div class="searchResults">
+      <ol></ol>
     </div>
-    <button class="btn" type="submit" id="submitAttributes">search stolen bikes by color</button>
-  </form>
-  <br>
-  <br>
-  <div class="searchResults">
-    <ol>
-    </ol>
+    <form id="brandStolenBikes" name="brandStolenBikes">
+      <div class="form-group">
+        <input id="findBrand" type="text">
+      </div><button class="btn" id="submitBrand" type="submit">search stolen
+      bikes by brand</button>
+    </form>
+    <div class="searchBrandResults">
+      <ol></ol>
+    </div>
+    <form id="dateStolenBikes" name="dateStolenBikes">
+      <div class="form-group">
+        <input id="findDate" type="date">
+      </div><button class="btn" id="submitDate" type="submit">search stolen
+      bikes by date</button>
+    </form>
+    <div class="searchDateResults">
+      <ol></ol>
+    </div><button class='btn' id='show-map' type='button'>Show Map</button><br>
+    <br>
+    <div id='map'></div>
   </div>
-  <form id="brandStolenBikes">
-    <div class="form-group">
-      <input type="text" id="findBrand" >
-  </div>
-  <button class="btn" type="submit" id="submitBrand">search stolen bikes by brand</button>
-</form>
-<div class="searchBrandResults">
-  <ol>
-  </ol>
-</div>
-<form id="dateStolenBikes">
-  <div class="form-group">
-    <input type="date" id="findDate" >
-</div>
-<button class="btn" type="submit" id="submitDate">search stolen bikes by date</button>
-</form>
-<div class="searchDateResults">
-<ol>
-</ol>
-</div>
-<div id='map'>
-</div>
-</div>
-
-<script
-       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd4EpGAg7dISsNmUnbLOW1udY06UIWorg">
-   </script>
-  </body>
+  <script src=
+  "https://maps.googleapis.com/maps/api/js?key=AIzaSyDd4EpGAg7dISsNmUnbLOW1udY06UIWorg">
+  </script>
+</body>
 </html>
