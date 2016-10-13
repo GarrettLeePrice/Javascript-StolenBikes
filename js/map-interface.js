@@ -1,6 +1,9 @@
 var googleMap = require('./../js/map.js').googleMapModule;
+var apiKey = require('./../.env').apiKey;
 var mapObject;
 var infoWindows = [];
+var userLocation;
+var bikeStores = [];
 $(document).ready(function() {
   $('#show-map').click(function() {
     locateUser();
@@ -23,6 +26,7 @@ function locateUser() {
 function geolocationSuccess(position) {
   var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords
     .longitude);
+  userLocation = userLatLng;
   var myOptions = {
     zoom: 13,
     center: userLatLng,
@@ -41,7 +45,7 @@ function geolocationSuccess(position) {
     icon: 'http://maps.google.com/mapfiles/arrow.png'
   });
   marker.addListener('click', function() {
-    infoWindows.forEach(function(value){
+    infoWindows.forEach(function(value) {
       value.close();
     });
     infowindow0.open(mapObject, this);
@@ -62,7 +66,7 @@ function geolocationSuccess(position) {
     icon: 'http://labs.google.com/ridefinder/images/mm_20_green.png'
   });
   marker.addListener('click', function() {
-    infoWindows.forEach(function(value){
+    infoWindows.forEach(function(value) {
       value.close();
     });
     infowindow1.open(mapObject, this);
@@ -83,7 +87,7 @@ function geolocationSuccess(position) {
     icon: 'http://labs.google.com/ridefinder/images/mm_20_green.png'
   });
   marker.addListener('click', function() {
-    infoWindows.forEach(function(value){
+    infoWindows.forEach(function(value) {
       value.close();
     });
     infowindow2.open(mapObject, this);
@@ -104,12 +108,11 @@ function geolocationSuccess(position) {
     icon: 'http://labs.google.com/ridefinder/images/mm_20_green.png'
   });
   marker.addListener('click', function() {
-    infoWindows.forEach(function(value){
+    infoWindows.forEach(function(value) {
       value.close();
     });
     infowindow3.open(mapObject, this);
   });
-
   contentString = 'Hawkers Locker';
   var infowindow4 = new google.maps.InfoWindow({
     content: contentString
@@ -126,12 +129,11 @@ function geolocationSuccess(position) {
     icon: 'http://labs.google.com/ridefinder/images/mm_20_green.png'
   });
   marker.addListener('click', function() {
-    infoWindows.forEach(function(value){
+    infoWindows.forEach(function(value) {
       value.close();
     });
     infowindow4.open(mapObject, this);
   });
-
   contentString = 'USA Pawn & Jewelry Co';
   var infowindow5 = new google.maps.InfoWindow({
     content: contentString
@@ -148,13 +150,35 @@ function geolocationSuccess(position) {
     icon: 'http://labs.google.com/ridefinder/images/mm_20_green.png'
   });
   marker.addListener('click', function() {
-    infoWindows.forEach(function(value){
+    infoWindows.forEach(function(value) {
       value.close();
     });
     infowindow5.open(mapObject, this);
   });
+  getBikeStores();
 }
 
 function geolocationError(positionError) {
   alert(positionError);
+}
+
+function getBikeStores() {
+  var url =
+    "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + apiKey + "&location=" +
+    userLocation.lat() + "," + userLocation.lng() +
+    "&radius=2000&type=bicycle_store";
+  $.getJSON(url).then(function(response) {
+    response.results.forEach(function(result) {
+      var storeMarker = new google.maps.Marker({
+        position: {
+          lat: result.geometry.location.lat,
+          lng: result.geometry.location.lng
+        },
+        map: mapObject,
+        title: result.name,
+        icon: 'http://labs.google.com/ridefinder/images/mm_20_blue.png'
+      });
+      bikeStores.push(storeMarker);
+    });
+  });
 }
